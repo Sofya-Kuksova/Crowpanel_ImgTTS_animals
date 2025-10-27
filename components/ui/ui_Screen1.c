@@ -4,6 +4,8 @@
 // Project name: TTSimg
 
 #include "ui.h"
+#include "ui_events.h"      // ← прототип apply_image_for_case
+#include "builtin_texts.h"  // ← прототип builtin_text_get
 
 lv_obj_t * ui_Screen1 = NULL;
 lv_obj_t * ui_btnsay = NULL;
@@ -63,13 +65,12 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_x(ui_Label1, 20);
     lv_obj_set_y(ui_Label1, -15);
     lv_obj_set_align(ui_Label1, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label1, "say");
+    lv_label_set_text(ui_Label1, "play");
     lv_obj_set_style_text_color(ui_Label1, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Label1, &ui_font_Font1, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Img = lv_img_create(ui_Screen1);
-    lv_img_set_src(ui_Img, &ui_img_792570069);
     lv_obj_set_width(ui_Img, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Img, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_Img, 43);
@@ -108,6 +109,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_add_event_cb(ui_btnsay, ui_event_btnsay, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_btnchg, ui_event_btnchg, LV_EVENT_ALL, NULL);
 
+    apply_image_for_case(builtin_text_get());
 }
 
 void ui_Screen1_screen_destroy(void)

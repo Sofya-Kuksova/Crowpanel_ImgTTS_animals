@@ -25,9 +25,6 @@
 
 #include <dirent.h>
 
-extern "C" void ui_img_792570069_load(void);
-extern "C" void ui_img_1049104300_load(void);
-
 using namespace esp_panel::drivers;
 using namespace esp_panel::board;
 
@@ -35,21 +32,6 @@ static const char* TAG = "main";
 
 
 HxTTS *g_hx_tts = nullptr;
-
-static const char* fs_base = "/spiffs";
-
-static void map_path(char *dst, size_t dst_sz, const char *src) {
-    // Поддержка "S:/assets/..." и "S:assets/..."
-    if (src[0]=='S' && src[1]==':') {
-        const char *p = src + 2;
-        if (*p == '/') p++;                      // пропустили возможный '/'
-        // НИЧЕГО не срезаем — в варианте A файлы реально лежат в /spiffs/assets/...
-        snprintf(dst, dst_sz, "%s/%s", fs_base, p);
-    } else {
-        snprintf(dst, dst_sz, "%s", src);
-    }
-}
-
 
 
 static bool fs_ready_cb(lv_fs_drv_t*) { return true; }
@@ -139,16 +121,6 @@ extern "C" void start_tts_playback_impl(const char *text)
     g_hx_tts->startPlayback();
 }
 
-static void fs_mount(void) {
-    esp_vfs_spiffs_conf_t conf = {
-        .base_path = "/spiffs",
-        .partition_label = "spiffs",
-        .max_files = 12,
-        .format_if_mount_failed = false
-    };
-    ESP_ERROR_CHECK(esp_vfs_spiffs_register(&conf));
-}
-
 
 extern "C" void app_main()
 {
@@ -171,15 +143,13 @@ extern "C" void app_main()
     // 3) Регистрируем наш драйвер после порта (порт чистит FS-список)
     lvgl_register_drive_S();
 
-    // 4) Загружаем бинарные картинки (SquareLine Binary Raw)
-    ui_img_792570069_load();
-    ui_img_1049104300_load();
-
     // 5) Создаём UI (тут SquareLine уже сможет открыть "S:assets/....bin")
     ui_init();
 
     // 6) Старт рендера LVGL
     ESP_UTILS_CHECK_FALSE_EXIT(lvgl_port_start(), "LVGL start failed");
+
+    
 
     // 7) TTS как было
     g_hx_tts = new HxTTS(HxTTS::BusType::UART);

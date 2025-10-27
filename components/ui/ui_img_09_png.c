@@ -6,16 +6,16 @@
 #include "ui.h"
 
 
-// IMAGE DATA: assets/vid-na-3d-masinu_1_.png
-lv_img_dsc_t ui_img_792570069 = {
+// IMAGE DATA: assets/09.png
+lv_img_dsc_t ui_img_09_png = {
     .header.always_zero = 0,
     .header.w = 578,
     .header.h = 339,
     .header.cf = LV_IMG_CF_TRUE_COLOR,
 };
 
-void ui_img_792570069_load()
+void ui_img_09_png_load()
 {
-    ui_img_792570069.data = UI_LOAD_IMAGE("S:assets/ui_img_792570069.bin", 391884);
-    ui_img_792570069.data_size = 391884;
+    ui_img_09_png.data = UI_LOAD_IMAGE("S:assets/ui_img_09_png.bin", 391884);
+    ui_img_09_png.data_size = 391884;
 }

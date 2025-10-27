@@ -1,21 +1,30 @@
 #pragma once
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-// Выбери нужный кейс, просто поменяв define:
-#define BUILTIN_TEXT_CASE  CASE_STORY_KIDS // ← поменяй на любой из enum ниже
-
 typedef enum {
-    CASE_HELLO = 0,
-    CASE_RU_SHORT,
-    CASE_STORY_KIDS,
-    CASE_TECH_DEMO,
+    CASE_TXT_01 = 0,
+    CASE_TXT_02,
+    CASE_TXT_03,
+    CASE_TXT_04,
+    CASE_TXT_05,
+    CASE_TXT_06,
+    CASE_TXT_07,
+    CASE_TXT_08,
+    CASE_TXT_09,
+    CASE_TXT_10,
+    CASE_TXT_11,
+    CASE_TXT_12,
+    CASE_TXT_13,
+    CASE_TXT_14,
+    CASE_TXT_COUNT
 } builtin_text_case_t;
 
-// Вернёт строку по выбранному BUILTIN_TEXT_CASE
 const char* get_builtin_text(void);
+void builtin_text_next(void);
+void builtin_text_set(builtin_text_case_t c);
+builtin_text_case_t builtin_text_get(void);
 
 #ifdef __cplusplus
 }
