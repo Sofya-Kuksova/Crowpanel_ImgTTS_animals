@@ -6,14 +6,19 @@
 extern "C" {
 #endif
 
-// публичный хелпер – будем звать из ui_Screen1.c
-void apply_image_for_case(builtin_text_case_t c);
-
 void on_btn_change_pressed(lv_event_t * e);
 void on_btn_say_pressed(lv_event_t * e);
 void on_btn_answer_pressed(lv_event_t * e);
-void on_text_update_from_uart(const char *text);
 void ui_notify_tts_finished(void);
+
+// Показать Screen2 с вопросом для текущего кейса (без переключения кейса)
+void ui_show_question_current_case(void);
+
+// Применить картинку и текст для указанного кейса (используется из ui_Screen1.c)
+void apply_image_for_case(builtin_text_case_t c);
+
+
+void on_text_update_from_uart(const char *text);
 
 #ifdef __cplusplus
 }

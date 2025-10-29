@@ -4,19 +4,20 @@
 // Project name: animal
 
 #include "ui.h"
+#include "ui_events.h"
 
 lv_obj_t * ui_Screen2 = NULL;
 lv_obj_t * ui_Panel2 = NULL;
 lv_obj_t * ui_que = NULL;
 lv_obj_t * ui_Container1 = NULL;
 lv_obj_t * ui_Panel4 = NULL;
-lv_obj_t * ui_Label5 = NULL;
+lv_obj_t * ui_LabelA = NULL;
 lv_obj_t * ui_labA = NULL;
 lv_obj_t * ui_Panel5 = NULL;
-lv_obj_t * ui_Label10 = NULL;
+lv_obj_t * ui_LabelB = NULL;
 lv_obj_t * ui_LabB = NULL;
 lv_obj_t * ui_Panel1 = NULL;
-lv_obj_t * ui_Label1 = NULL;
+lv_obj_t * ui_LabelC = NULL;
 lv_obj_t * ui_LabC = NULL;
 lv_obj_t * ui_btnans = NULL;
 lv_obj_t * ui_Label4 = NULL;
@@ -49,7 +50,7 @@ void ui_Screen2_screen_init(void)
     lv_obj_set_style_pad_column(ui_Screen2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Panel2 = lv_obj_create(ui_Screen2);
-    lv_obj_set_width(ui_Panel2, 675);
+    lv_obj_set_width(ui_Panel2, 690);
     lv_obj_set_height(ui_Panel2, 158);
     lv_obj_set_x(ui_Panel2, -42);
     lv_obj_set_y(ui_Panel2, -47);
@@ -63,12 +64,16 @@ void ui_Screen2_screen_init(void)
     lv_obj_set_style_border_color(ui_Panel2, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_border_opa(ui_Panel2, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_border_width(ui_Panel2, 4, LV_PART_MAIN | LV_STATE_DEFAULT);
+     lv_obj_set_style_pad_left(ui_Panel2, 15, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui_Panel2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui_Panel2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui_Panel2, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_que = lv_label_create(ui_Panel2);
     lv_obj_set_width(ui_que, 667);
     lv_obj_set_height(ui_que, 115);
     lv_obj_set_align(ui_que, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_que, "Who changes color not just for hiding, but for mood");
+    lv_label_set_text(ui_que, "");
     lv_obj_set_style_text_color(ui_que, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_que, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_align(ui_que, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -76,7 +81,7 @@ void ui_Screen2_screen_init(void)
 
     ui_Container1 = lv_obj_create(ui_Screen2);
     lv_obj_remove_style_all(ui_Container1);
-    lv_obj_set_width(ui_Container1, 637);
+    lv_obj_set_width(ui_Container1, 651);
     lv_obj_set_height(ui_Container1, 68);
     lv_obj_set_x(ui_Container1, 152);
     lv_obj_set_y(ui_Container1, -14);
@@ -88,7 +93,7 @@ void ui_Screen2_screen_init(void)
     lv_obj_set_style_pad_column(ui_Container1, 30, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Panel4 = lv_obj_create(ui_Container1);
-    lv_obj_set_width(ui_Panel4, 180);
+    lv_obj_set_width(ui_Panel4, 196);
     lv_obj_set_height(ui_Panel4, 57);
     lv_obj_set_x(ui_Panel4, 0);
     lv_obj_set_y(ui_Panel4, -1);
@@ -107,28 +112,29 @@ void ui_Screen2_screen_init(void)
     lv_obj_set_style_pad_top(ui_Panel4, 11, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_bottom(ui_Panel4, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_row(ui_Panel4, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_column(ui_Panel4, 8, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_column(ui_Panel4, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Label5 = lv_label_create(ui_Panel4);
-    lv_obj_set_width(ui_Label5, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_Label5, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_align(ui_Label5, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label5, "A.");
-    lv_obj_set_style_text_color(ui_Label5, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui_Label5, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui_Label5, &ui_font_Font4, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_LabelA = lv_label_create(ui_Panel4);
+    lv_obj_set_width(ui_LabelA, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_LabelA, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_LabelA, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_LabelA, "A.");
+    lv_obj_set_style_text_color(ui_LabelA, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_LabelA, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_LabelA, &ui_font_Font4, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_labA = lv_label_create(ui_Panel4);
-    lv_obj_set_width(ui_labA, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_labA, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_width(ui_labA, 151);
+    lv_obj_set_height(ui_labA, 34);
     lv_obj_set_align(ui_labA, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_labA, "Elephant");
+    lv_label_set_text(ui_labA, "");
     lv_obj_set_style_text_color(ui_labA, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_labA, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui_labA, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_labA, &ui_font_Font4, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Panel5 = lv_obj_create(ui_Container1);
-    lv_obj_set_width(ui_Panel5, 180);
+    lv_obj_set_width(ui_Panel5, 196);
     lv_obj_set_height(ui_Panel5, 57);
     lv_obj_set_x(ui_Panel5, 0);
     lv_obj_set_y(ui_Panel5, -1);
@@ -147,28 +153,29 @@ void ui_Screen2_screen_init(void)
     lv_obj_set_style_pad_top(ui_Panel5, 11, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_bottom(ui_Panel5, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_row(ui_Panel5, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_column(ui_Panel5, 8, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_column(ui_Panel5, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Label10 = lv_label_create(ui_Panel5);
-    lv_obj_set_width(ui_Label10, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_Label10, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_align(ui_Label10, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label10, "B.");
-    lv_obj_set_style_text_color(ui_Label10, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui_Label10, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui_Label10, &ui_font_Font4, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_LabelB = lv_label_create(ui_Panel5);
+    lv_obj_set_width(ui_LabelB, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_LabelB, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_LabelB, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_LabelB, "B.");
+    lv_obj_set_style_text_color(ui_LabelB, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_LabelB, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_LabelB, &ui_font_Font4, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_LabB = lv_label_create(ui_Panel5);
-    lv_obj_set_width(ui_LabB, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_LabB, LV_SIZE_CONTENT);    /// 1
+     ui_LabB = lv_label_create(ui_Panel5);
+    lv_obj_set_width(ui_LabB, 151);
+    lv_obj_set_height(ui_LabB, 34);
     lv_obj_set_align(ui_LabB, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_LabB, "Flamingo");
+    lv_label_set_text(ui_LabB, "");
     lv_obj_set_style_text_color(ui_LabB, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_LabB, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui_LabB, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_LabB, &ui_font_Font4, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Panel1 = lv_obj_create(ui_Container1);
-    lv_obj_set_width(ui_Panel1, 180);
+    lv_obj_set_width(ui_Panel1, 196);
     lv_obj_set_height(ui_Panel1, 57);
     lv_obj_set_x(ui_Panel1, 0);
     lv_obj_set_y(ui_Panel1, -1);
@@ -187,24 +194,25 @@ void ui_Screen2_screen_init(void)
     lv_obj_set_style_pad_top(ui_Panel1, 11, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_bottom(ui_Panel1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_row(ui_Panel1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_column(ui_Panel1, 8, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_column(ui_Panel1, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Label1 = lv_label_create(ui_Panel1);
-    lv_obj_set_width(ui_Label1, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_Label1, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_align(ui_Label1, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label1, "C.");
-    lv_obj_set_style_text_color(ui_Label1, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui_Label1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui_Label1, &ui_font_Font4, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_LabelC = lv_label_create(ui_Panel1);
+    lv_obj_set_width(ui_LabelC, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_LabelC, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_LabelC, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_LabelC, "C.");
+    lv_obj_set_style_text_color(ui_LabelC, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_LabelC, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_LabelC, &ui_font_Font4, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_LabC = lv_label_create(ui_Panel1);
-    lv_obj_set_width(ui_LabC, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_LabC, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_width(ui_LabC, 151);
+    lv_obj_set_height(ui_LabC, 34);
     lv_obj_set_align(ui_LabC, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_LabC, "Kangaroo");
+    lv_label_set_text(ui_LabC, "");
     lv_obj_set_style_text_color(ui_LabC, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_LabC, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui_LabC, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_LabC, &ui_font_Font4, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_btnans = lv_btn_create(ui_Screen2);
@@ -231,16 +239,6 @@ void ui_Screen2_screen_init(void)
     lv_obj_set_style_text_opa(ui_Label4, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Label4, &ui_font_Font5, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_Image3 = lv_img_create(ui_Screen2);
-    lv_img_set_src(ui_Image3, &ui_img_81777710);
-    lv_obj_set_width(ui_Image3, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_Image3, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Image3, 277);
-    lv_obj_set_y(ui_Image3, -84);
-    lv_obj_set_align(ui_Image3, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_Image3, LV_OBJ_FLAG_ADV_HITTEST | LV_OBJ_FLAG_IGNORE_LAYOUT);     /// Flags
-    lv_obj_clear_flag(ui_Image3, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-
     lv_obj_add_event_cb(ui_btnans, ui_event_btnans, LV_EVENT_ALL, NULL);
 
 }
@@ -255,13 +253,13 @@ void ui_Screen2_screen_destroy(void)
     ui_que = NULL;
     ui_Container1 = NULL;
     ui_Panel4 = NULL;
-    ui_Label5 = NULL;
+    ui_LabelA = NULL;
     ui_labA = NULL;
     ui_Panel5 = NULL;
-    ui_Label10 = NULL;
+    ui_LabelB = NULL;
     ui_LabB = NULL;
     ui_Panel1 = NULL;
-    ui_Label1 = NULL;
+    ui_LabelC = NULL;
     ui_LabC = NULL;
     ui_btnans = NULL;
     ui_Label4 = NULL;

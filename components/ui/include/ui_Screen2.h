@@ -18,18 +18,17 @@ extern lv_obj_t * ui_Panel2;
 extern lv_obj_t * ui_que;
 extern lv_obj_t * ui_Container1;
 extern lv_obj_t * ui_Panel4;
-extern lv_obj_t * ui_Label5;
+extern lv_obj_t * ui_LabelA;
 extern lv_obj_t * ui_labA;
 extern lv_obj_t * ui_Panel5;
-extern lv_obj_t * ui_Label10;
+extern lv_obj_t * ui_LabelB;
 extern lv_obj_t * ui_LabB;
 extern lv_obj_t * ui_Panel1;
-extern lv_obj_t * ui_Label1;
+extern lv_obj_t * ui_LabelC;
 extern lv_obj_t * ui_LabC;
 extern void ui_event_btnans(lv_event_t * e);
 extern lv_obj_t * ui_btnans;
 extern lv_obj_t * ui_Label4;
-extern lv_obj_t * ui_Image3;
 // CUSTOM VARIABLES
 
 #ifdef __cplusplus

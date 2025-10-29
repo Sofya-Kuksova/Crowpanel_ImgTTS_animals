@@ -5,6 +5,7 @@
 
 #include "ui.h"
 #include "ui_helpers.h"
+#include "ui_events.h"
 
 ///////////////////// VARIABLES ////////////////////
 
@@ -35,15 +36,21 @@ void ui_init(void)
     lv_disp_set_theme(dispp, theme);
 
     ui_img_1049104300_load();
-    ui_img_81777710_load();
 
+    // Подготовим экраны (оба), но показывать будем Screen2
     ui_Screen1_screen_init();
+    ui_Screen2_screen_init();
   
     ui____initial_actions0 = lv_obj_create(NULL);
-    lv_disp_load_scr(ui_Screen1);
+
+    // NEW: стартуем с первого вопроса на Screen2 (CASE_TXT_01)
+    ui_show_question_current_case();
 }
 
 void ui_destroy(void)
 {
     ui_Screen1_screen_destroy();
+    ui_Screen2_screen_destroy();
 }
+
+

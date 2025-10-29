@@ -21,7 +21,6 @@ set(SRCS
     ui_img_09_png.c;
     ui_img_10_png.c;
     ui_img_1049104300.c
-    ui_img_81777710.c
     tts_bridge_impl.c
     builtin_texts.c )
 

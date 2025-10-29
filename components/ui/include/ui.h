@@ -30,6 +30,7 @@ extern "C" {
 ///////////////////// SCREENS ////////////////////
 
 #include "ui_Screen1.h"
+#include "ui_Screen2.h"
 
 ///////////////////// VARIABLES ////////////////////
 
@@ -63,8 +64,6 @@ void ui_img_10_png_load();
 
 extern lv_img_dsc_t ui_img_1049104300;   
 void ui_img_1049104300_load();
-extern lv_img_dsc_t ui_img_81777710;   
-void ui_img_81777710_load();
 
 // FONTS
 LV_FONT_DECLARE(ui_font_Font3);
