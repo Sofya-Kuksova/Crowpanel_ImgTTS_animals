@@ -14,10 +14,6 @@ typedef enum {
     CASE_TXT_08,
     CASE_TXT_09,
     CASE_TXT_10,
-    CASE_TXT_11,
-    CASE_TXT_12,
-    CASE_TXT_13,
-    CASE_TXT_14,
     CASE_TXT_COUNT
 } builtin_text_case_t;
 

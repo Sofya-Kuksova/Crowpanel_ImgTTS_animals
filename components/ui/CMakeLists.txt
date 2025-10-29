@@ -1,13 +1,18 @@
 set(SRCS 
     ui_Screen1.c
+    ui_Screen2.c
     ui.c
     ui_comp_hook.c
     ui_helpers.c
     ui_events.c
     ui_font_Font1.c
+    ui_font_Font3.c
+    ui_font_Font4.c
+    ui_font_Font5.c
     ui_img_manager.c
+    ui_img_01_png.c;
+    ui_img_02_png.c;
     ui_img_03_png.c;
-    ui_img_020_png.c;
     ui_img_04_png.c;
     ui_img_05_png.c;
     ui_img_06_png.c;
@@ -15,12 +20,8 @@ set(SRCS
     ui_img_08_png.c;
     ui_img_09_png.c;
     ui_img_10_png.c;
-    ui_img_11_png.c;
-    ui_img_12_png.c;
-    ui_img_13_png.c;
-    ui_img_14_png.c;
-    ui_img_15_png.c;
     ui_img_1049104300.c
+    ui_img_81777710.c
     tts_bridge_impl.c
     builtin_texts.c )
 

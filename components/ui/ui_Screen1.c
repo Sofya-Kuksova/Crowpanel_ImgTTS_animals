@@ -60,12 +60,12 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_style_bg_opa(ui_btnsay, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Label1 = lv_label_create(ui_btnsay);
-    lv_obj_set_width(ui_Label1, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_Label1, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Label1, 20);
-    lv_obj_set_y(ui_Label1, -15);
+    lv_obj_set_width(ui_Label1, 89);   
+    lv_obj_set_height(ui_Label1, 82);    
+    lv_obj_set_x(ui_Label1, 26);
+    lv_obj_set_y(ui_Label1, -13);
     lv_obj_set_align(ui_Label1, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_Label1, "play");
+    lv_label_set_text(ui_Label1, "Learn    More");
     lv_obj_set_style_text_color(ui_Label1, lv_color_hex(0x000000), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Label1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Label1, &ui_font_Font1, LV_PART_MAIN | LV_STATE_DEFAULT);

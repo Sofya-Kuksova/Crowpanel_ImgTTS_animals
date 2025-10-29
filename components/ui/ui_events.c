@@ -21,20 +21,16 @@ static inline bool is_pinned_image(const lv_img_dsc_t* d)
 }
 
 static const case_visual_t kVisuals[CASE_TXT_COUNT] = {
-    [CASE_TXT_01] = { &ui_img_020_png, ui_img_020_png_load }, // Old Beacon, Norway
-    [CASE_TXT_02] = { &ui_img_03_png,  ui_img_03_png_load  }, // Clocks Yard, Prague
-    [CASE_TXT_03] = { &ui_img_04_png,  ui_img_04_png_load  }, // Deserted Railway Station, Argentina
-    [CASE_TXT_04] = { &ui_img_05_png,  ui_img_05_png_load  }, // Village Covered with Snow, Japan
-    [CASE_TXT_05] = { &ui_img_06_png,  ui_img_06_png_load  }, // Bridge across the River, Georgia
-    [CASE_TXT_06] = { &ui_img_07_png,  ui_img_07_png_load  }, // Graffiti alley, Lisbon
-    [CASE_TXT_07] = { &ui_img_08_png,  ui_img_08_png_load  }, // Desert Well, Morocco
-    [CASE_TXT_08] = { &ui_img_09_png,  ui_img_09_png_load  }, // Misty Field, Poland
-    [CASE_TXT_09] = { &ui_img_10_png,  ui_img_10_png_load  }, // Misty Field, Poland
-    [CASE_TXT_10] = { &ui_img_11_png,  ui_img_11_png_load  }, // Misty Field, Poland
-    [CASE_TXT_11] = { &ui_img_12_png,  ui_img_12_png_load  }, // Misty Field, Poland
-    [CASE_TXT_12] = { &ui_img_13_png,  ui_img_13_png_load  }, // Misty Field, Poland
-    [CASE_TXT_13] = { &ui_img_14_png,  ui_img_14_png_load  }, // Misty Field, Poland
-    [CASE_TXT_14] = { &ui_img_15_png,  ui_img_15_png_load  }, // Misty Field, Poland
+    [CASE_TXT_01] = { &ui_img_01_png, ui_img_01_png_load }, 
+    [CASE_TXT_02] = { &ui_img_02_png,  ui_img_02_png_load  }, 
+    [CASE_TXT_03] = { &ui_img_03_png,  ui_img_03_png_load  }, 
+    [CASE_TXT_04] = { &ui_img_04_png,  ui_img_04_png_load  }, 
+    [CASE_TXT_05] = { &ui_img_05_png,  ui_img_05_png_load  }, 
+    [CASE_TXT_06] = { &ui_img_06_png,  ui_img_06_png_load  }, 
+    [CASE_TXT_07] = { &ui_img_07_png,  ui_img_07_png_load  }, 
+    [CASE_TXT_08] = { &ui_img_08_png,  ui_img_08_png_load  }, 
+    [CASE_TXT_09] = { &ui_img_09_png,  ui_img_09_png_load  }, 
+    [CASE_TXT_10] = { &ui_img_10_png,  ui_img_10_png_load  }, 
 };
 
 // Освободить все загруженные буферы, кроме исключения и «прикреплённых»
@@ -96,6 +92,11 @@ void on_btn_say_pressed(lv_event_t * e)
     const char* text = get_builtin_text();
     lv_obj_add_state(ui_btnsay, LV_STATE_DISABLED);  // опционально
     start_tts_playback_c(text);
+}
+
+void on_btn_answer_pressed(lv_event_t * e)
+{
+	// Your code here
 }
 
 static void ui_notify_tts_finished_async(void *arg)

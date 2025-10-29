@@ -39,10 +39,12 @@ extern "C" {
 extern lv_obj_t * ui____initial_actions0;
 
 // IMAGES AND IMAGE SETS
+extern lv_img_dsc_t ui_img_01_png;   
+void ui_img_01_png_load();
+extern lv_img_dsc_t ui_img_02_png;   
+void ui_img_02_png_load();
 extern lv_img_dsc_t ui_img_03_png;   
 void ui_img_03_png_load();
-extern lv_img_dsc_t ui_img_020_png;   
-void ui_img_020_png_load();
 extern lv_img_dsc_t ui_img_04_png;   
 void ui_img_04_png_load();
 extern lv_img_dsc_t ui_img_05_png;   
@@ -57,22 +59,17 @@ extern lv_img_dsc_t ui_img_09_png;
 void ui_img_09_png_load();
 extern lv_img_dsc_t ui_img_10_png;   
 void ui_img_10_png_load();
-extern lv_img_dsc_t ui_img_11_png;   
-void ui_img_11_png_load();
-extern lv_img_dsc_t ui_img_12_png;   
-void ui_img_12_png_load();
-extern lv_img_dsc_t ui_img_13_png;   
-void ui_img_13_png_load();
-extern lv_img_dsc_t ui_img_14_png;   
-void ui_img_14_png_load();
-extern lv_img_dsc_t ui_img_15_png;   
-void ui_img_15_png_load();
+
 
 extern lv_img_dsc_t ui_img_1049104300;   
 void ui_img_1049104300_load();
-
+extern lv_img_dsc_t ui_img_81777710;   
+void ui_img_81777710_load();
 
 // FONTS
+LV_FONT_DECLARE(ui_font_Font3);
+LV_FONT_DECLARE(ui_font_Font4);
+LV_FONT_DECLARE(ui_font_Font5);
 LV_FONT_DECLARE(ui_font_Font1);
 
 // UI INIT
