@@ -16,4 +16,5 @@ list(APPEND LVGL_INC "src")
 idf_component_register(
     SRCS ${LVGL_SRCS}
     INCLUDE_DIRS ${LVGL_INC}
+    PRIV_REQUIRES lv_mem_psram
 )
