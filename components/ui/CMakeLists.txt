@@ -24,10 +24,8 @@ set(SRCS
     tts_bridge_impl.c
     builtin_texts.c )
 
-# при необходимости укажите папки заголовков, например "include"
 set(INCLUDE_DIRS "include")
 
-# регистрируем компонент через ESP-IDF API — НИКОГДА не используйте add_library здесь
 idf_component_register(
     SRCS ${SRCS}
     INCLUDE_DIRS ${INCLUDE_DIRS}

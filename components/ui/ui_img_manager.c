@@ -5,19 +5,17 @@
 
 static const char *TAG = "UIIMG";
 
-/* Превращаем "S:assets/xxx.bin" -> "/spiffs/assets/xxx.bin" */
 static void map_path(char *dst, size_t dst_sz, const char *src)
 {
     if (src && src[0] == 'S' && src[1] == ':') {
-        const char *p = src + 2;   // после "S:"
-        if (*p == '/') p++;        // пропустить возможный '/'
-        snprintf(dst, dst_sz, "/spiffs/%s", p);  // у тебя файлы лежат в /spiffs/assets/...
+        const char *p = src + 2;   
+        if (*p == '/') p++;        
+        snprintf(dst, dst_sz, "/spiffs/%s", p); 
     } else {
         snprintf(dst, dst_sz, "%s", src ? src : "");
     }
 }
 
-/* Прямая загрузка бинарника в PSRAM */
 uint8_t* _ui_load_binary_direct(const char* fname_S, uint32_t size)
 {
     char real[256];

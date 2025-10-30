@@ -1,5 +1,5 @@
 #include "ui_events.h"
-#include "ui.h"                 // ui_Img, ui_btnsay, ui_que, ui_labA/ui_LabB/ui_LabC, screens
+#include "ui.h"                 
 #include "tts_bridge.h"
 #include "builtin_texts.h"
 #include "esp_log.h"
@@ -9,7 +9,6 @@
 
 static const char* TAG_UI = "ui_events";
 
-// Таймер для автопроизнесения вопроса на Screen2
 static lv_timer_t* s_question_tts_timer = NULL;
 
 typedef void (*img_loader_t)(void);
@@ -60,18 +59,15 @@ static void tts_question_timer_cb(lv_timer_t* t)
             start_tts_playback_c(q);
         }
     }
-    // Не удаляем таймер здесь: repeat_count=1 сам завершит и освободит.
-    s_question_tts_timer = NULL;   // очищаем наш указатель
+    
+    s_question_tts_timer = NULL;   
 }
 
-
-// Некоторые ресурсы «прикреплены» и их освобождать нельзя
 static bool is_pinned_image(const lv_img_dsc_t* dsc)
 {
     return (dsc == &ui_img_1049104300);
 }
 
-// Освобождаем PSRAM всех картинок, кроме указанной
 static void free_all_other_images(const lv_img_dsc_t* except_dsc)
 {
     for (int i = 0; i < CASE_TXT_COUNT; ++i) {
@@ -88,22 +84,20 @@ static void free_all_other_images(const lv_img_dsc_t* except_dsc)
     }
 }
 
-// Публичный хелпер – применить картинку для кейса и выбрать текст
 void apply_image_for_case(builtin_text_case_t c)
 {
     if (c < 0 || c >= CASE_TXT_COUNT) return;
 
     const case_visual_t *cv = &kVisuals[c];
-    if (cv->load) cv->load();                  // загрузить из SPIFFS в PSRAM
+    if (cv->load) cv->load();                  
 
     if (ui_Img) {
-        lv_img_set_src(ui_Img, cv->img);       // показать на Screen1
+        lv_img_set_src(ui_Img, cv->img);       
     }
-    builtin_text_set(c);                       // «текущий» для TTS
-    free_all_other_images(cv->img);            // чистим PSRAM от лишнего
+    builtin_text_set(c);                       
+    free_all_other_images(cv->img);            
 }
 
-// Заполнение Screen2 по кейсу
 static void fill_screen2_for_case(builtin_text_case_t c)
 {
     if (!ui_Screen2) return;
@@ -112,15 +106,15 @@ static void fill_screen2_for_case(builtin_text_case_t c)
 
     if (ui_que)   lv_label_set_text(ui_que, qa->question);
     if (ui_labA)  lv_label_set_text(ui_labA, qa->A);
-    if (ui_LabB)  lv_label_set_text(ui_LabB, qa->B); // note: сгенерировано как ui_LabB
+    if (ui_LabB)  lv_label_set_text(ui_LabB, qa->B); 
     if (ui_LabC)  lv_label_set_text(ui_LabC, qa->C);
 
     if (s_question_tts_timer) {
-        lv_timer_del(s_question_tts_timer);   // отменяем прежний, если был запланирован
+        lv_timer_del(s_question_tts_timer);  
         s_question_tts_timer = NULL;
     }
     s_question_tts_timer = lv_timer_create(tts_question_timer_cb, 1000 /* ms */, (void*)(uintptr_t)c);
-    lv_timer_set_repeat_count(s_question_tts_timer, 1); // одноразовый; в cb не удаляем вручную
+    lv_timer_set_repeat_count(s_question_tts_timer, 1); 
 
 }
 
@@ -130,7 +124,6 @@ static void fill_screen2_for_case(builtin_text_case_t c)
 void on_btn_change_pressed(lv_event_t * e)
 {
     (void)e;
-    // двигаем «текущий кейс» вперёд
     builtin_text_next();
     builtin_text_case_t c = builtin_text_get();
 
@@ -138,7 +131,7 @@ void on_btn_change_pressed(lv_event_t * e)
         ui_Screen2_screen_init();
     }
     fill_screen2_for_case(c);
-    lv_disp_load_scr(ui_Screen2);              // → Screen2 (вопрос)
+    lv_disp_load_scr(ui_Screen2);              
 }
 
 void on_btn_say_pressed(lv_event_t * e)
@@ -153,7 +146,6 @@ void on_btn_answer_pressed(lv_event_t * e)
 {
     (void)e;
 
-    // Если таймер ещё не успел озвучить вопрос — отменим во избежание гонок
     if (s_question_tts_timer) {
         lv_timer_del(s_question_tts_timer);
         s_question_tts_timer = NULL;
@@ -168,8 +160,6 @@ void on_btn_answer_pressed(lv_event_t * e)
     lv_disp_load_scr(ui_Screen1);
 }
 
-
-// опционально – обновление текста из UART
 void on_text_update_from_uart(const char *text)
 {
     (void)text;
@@ -188,10 +178,9 @@ void ui_notify_tts_finished(void)
     lv_async_call(ui_notify_tts_finished_async, NULL);
 }
 
-// NEW: стартовая отрисовка Screen2 с текущим (не изменённым) кейсом
 void ui_show_question_current_case(void)
 {
-    builtin_text_case_t c = builtin_text_get();    // ожидается CASE_TXT_01 при старте
+    builtin_text_case_t c = builtin_text_get();    
     if (!ui_Screen2) {
         ui_Screen2_screen_init();
     }

@@ -51,7 +51,7 @@ const char* get_builtin_text(void)
                    "My wings became flippers, and I fly through water instead of air.\n"
                    "We huddle together when the wind gets mean.\n"
                    "And when we walk, yes, we know it looks funny. We like it!";
-        case CASE_TXT_10: // Old Garden Bridge, China
+        case CASE_TXT_10: 
             return "I'm the elephant, the gentle giant of memory.\n"
                    "I know the paths to water, the voices of friends, and the smell of rain.\n"
                    "My trunk is my hand. my nose. And sometimes my trumpet.\n"

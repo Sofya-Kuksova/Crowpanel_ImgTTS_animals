@@ -37,13 +37,11 @@ void ui_init(void)
 
     ui_img_1049104300_load();
 
-    // Подготовим экраны (оба), но показывать будем Screen2
     ui_Screen1_screen_init();
     ui_Screen2_screen_init();
   
     ui____initial_actions0 = lv_obj_create(NULL);
 
-    // NEW: стартуем с первого вопроса на Screen2 (CASE_TXT_01)
     ui_show_question_current_case();
 }
 

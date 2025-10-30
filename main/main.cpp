@@ -37,7 +37,6 @@ HxTTS *g_hx_tts = nullptr;
 static bool fs_ready_cb(lv_fs_drv_t*) { return true; }
 
 static void* fs_open_cb(lv_fs_drv_t*, const char* path, lv_fs_mode_t mode) {
-    // path уже без 'S:' → "assets/xxx.bin"
     char real[256];
     snprintf(real, sizeof real, "/spiffs/%s", path);
 
@@ -46,7 +45,7 @@ static void* fs_open_cb(lv_fs_drv_t*, const char* path, lv_fs_mode_t mode) {
     ESP_LOGI("FS","fopen: %s", real);
     FILE* fp = fopen(real, m);
     if(!fp) ESP_LOGE("FS","fopen failed");
-    return fp; // LVGL трактует NULL как ошибку
+    return fp; 
 }
 
 static lv_fs_res_t fs_close_cb(lv_fs_drv_t*, void* f) {
@@ -83,10 +82,8 @@ void lvgl_register_drive_S(void) {
     lv_fs_drv_register(&d);
 
     char letters[16]={0}; lv_fs_get_letters(letters);
-    ESP_LOGI("LVFS","letters: %s", letters);   // должно показать "S"
+    ESP_LOGI("LVFS","letters: %s", letters);   
 }
-
-
 
 static void checkStatus(HxTTS& tts)
 {
@@ -124,7 +121,6 @@ extern "C" void start_tts_playback_impl(const char *text)
 
 extern "C" void app_main()
 {
-    // 1) Монтируем SPIFFS
     esp_vfs_spiffs_conf_t conf = {
         .base_path = "/spiffs",
         .partition_label = "spiffs",
@@ -133,25 +129,18 @@ extern "C" void app_main()
     };
     ESP_ERROR_CHECK(esp_vfs_spiffs_register(&conf));
 
-    // 2) Инициализация платы и LVGL-порта (порт сам делает lv_init())
     Board* board = new Board();
     ESP_UTILS_CHECK_FALSE_EXIT(board->init(),  "Board init failed");
     ESP_UTILS_CHECK_FALSE_EXIT(board->begin(), "Board begin failed");
     ESP_UTILS_CHECK_FALSE_EXIT(lvgl_port_init(board->getLCD(), board->getTouch()),
                                "LVGL init failed");
 
-    // 3) Регистрируем наш драйвер после порта (порт чистит FS-список)
     lvgl_register_drive_S();
 
-    // 5) Создаём UI (тут SquareLine уже сможет открыть "S:assets/....bin")
     ui_init();
 
-    // 6) Старт рендера LVGL
     ESP_UTILS_CHECK_FALSE_EXIT(lvgl_port_start(), "LVGL start failed");
 
-    
-
-    // 7) TTS как было
     g_hx_tts = new HxTTS(HxTTS::BusType::UART);
     if (!g_hx_tts) { ESP_LOGE("main","Failed to create HxTTS instance"); return; }
     register_start_tts_cb(start_tts_playback_impl);

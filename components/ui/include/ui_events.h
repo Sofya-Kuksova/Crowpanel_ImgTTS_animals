@@ -1,6 +1,6 @@
 #pragma once
 #include "lvgl.h"
-#include "builtin_texts.h"   // нужен для builtin_text_case_t
+#include "builtin_texts.h"   
 
 #ifdef __cplusplus
 extern "C" {
@@ -11,12 +11,9 @@ void on_btn_say_pressed(lv_event_t * e);
 void on_btn_answer_pressed(lv_event_t * e);
 void ui_notify_tts_finished(void);
 
-// Показать Screen2 с вопросом для текущего кейса (без переключения кейса)
 void ui_show_question_current_case(void);
 
-// Применить картинку и текст для указанного кейса (используется из ui_Screen1.c)
 void apply_image_for_case(builtin_text_case_t c);
-
 
 void on_text_update_from_uart(const char *text);
 
