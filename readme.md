@@ -88,8 +88,8 @@
   - `ui_img` widget — current frame/photo/image;
   - `play` button — speak the associated text via HxTTS;
   - `Change` button (arrow) — navigate to the **next question**.  
-![Question Screen](images/ui_scr2.png)
-![Image Screen](images/ui_scr1.png)  
+![](images/ui_scr2.png)
+![](images/ui_scr1.png)  
 ---
 
 # Dependencies
