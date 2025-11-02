@@ -15,12 +15,12 @@
 
 # Features 
 
-- **Quiz mode with two screens per item:**
+- **Quiz mode with two screens:**
   - **Question screen:** question text, answer choices, `Answer` button.
-  - **Image screen:** `ui_img` widget (current frame/photo/image), `play` button (speaks the associated text via HxTTS), `Change` button (arrow) — jumps to the **next question**.  
+  - **Image screen:** `ui_img` widget (current photo), `play` button (speaks the associated text via HxTTS), `Change` button (arrow) — jumps to the **next question**.  
     **Cycle:** *Question i* → `Answer` → *Image i* → `Change` → *Question i+1* → … (looped).
-- **SPIFFS → PSRAM → LVGL image pipeline:** binary RAW frames are stored in the flash FS; before display, a frame is loaded entirely into a PSRAM buffer and rendered via LVGL/driver.
-- **Image ↔ description binding:** each frame has an associated descriptive text; the `play` button sends it to HxTTS for speech synthesis.
+- **SPIFFS → PSRAM → LVGL image pipeline:** binary RAW frames are stored in the flash FS. Before display, a frame is loaded entirely into a PSRAM buffer and rendered via LVGL/driver.
+- **Image ↔ description binding:** each img has an associated descriptive text. The `play` button sends it to HxTTS for speech synthesis.
 - **Embedded device focus:** Designed for ELECROW CrowPanel Advance 5.0-HMI. For detailed device hardware information, see [Device Hardware Documentation](https://www.elecrow.com/pub/wiki/CrowPanel_Advance_5.0-HMI_ESP32_AI_Display.html).  
 - **HxTTS control:** Load text into the buffer, trigger playback, monitor playback status, and adjust volume using the GRC HxTTS module. For details, see [HxTTS repository](https://github.com/Grovety/HxTTS).  
 - **Persistent settings:** Saved to NVS / file for convenient reuse.  
@@ -63,8 +63,8 @@
    - Connect the audio output (3.5 mm mini jack) from the HxTTS module to the speaker/headphones.
   
 4. **Screen Logic & Controls**  
-- **Question screen:** shows the question text and answer choices; the **`Answer`** button navigates to the image screen for the **same** item.
-- **Image screen:** `ui_img` displays the frame from SPIFFS;  
+- **Question screen:** shows the question text and answer choices. The **`Answer`** button navigates to the image screen for the **same** item.
+- **Image screen:** `ui_img` displays the frame from SPIFFS; 
   - **`play`** — sends the associated descriptive text to HxTTS and starts playback;  
   - **`Change`** (arrow) — navigates to the **next question** (item *i+1*; looped).
 - Service statuses/errors are visible in the serial log.
@@ -85,7 +85,7 @@
   - question text, answer choices;
   - `Answer` button → navigates to the image screen for the current item.
 - **Screen 2 — image:**
-  - `ui_img` widget — current frame/photo/image;
+  - `ui_img` widget — current photo;
   - `play` button — speak the associated text via HxTTS;
   - `Change` button (arrow) — navigate to the **next question**.  
 ![](images/ui_scr2.png)
