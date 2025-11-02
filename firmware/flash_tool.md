@@ -1,3 +1,3 @@
 # Flash tool
 
-This tool tries to find the first available COM port and then flashes prebuilt images inside the `./binaries` folder.
+This tool flashes prebuilt images from the `./binaries` directory with hardcoded parameters corresponding to the flash layout of the project.
