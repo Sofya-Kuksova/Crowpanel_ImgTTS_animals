@@ -72,7 +72,6 @@ typedef enum {
 Edit `components/ui/builtin_texts.c` → implement text for every case in `get_builtin_text()` (add a `case` for each new ID).
 
 ```c
-// components/ui/builtin_texts.c
 const char* get_builtin_text(void) {
     switch (builtin_text_get()) {
         case CASE_TXT_01: return "…";
@@ -151,7 +150,6 @@ static const qa_t kQA[CASE_TXT_COUNT] = {
 Make sure every new `ui_img_XX_png.c` is listed in `components/ui/CMakeLists.txt`.
 
 ```cmake
-# components/ui/CMakeLists.txt
 set(SRCS
   ...
   ui_img_01_png.c;
