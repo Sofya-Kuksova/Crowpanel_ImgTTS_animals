@@ -56,8 +56,14 @@ const char* get_builtin_text(void)
                    "I know the paths to water, the voices of friends, and the smell of rain.\n"
                    "My trunk is my hand. my nose. And sometimes my trumpet.\n"
                    "If you tell me a secret, I'll keep it forever.";
+
+        /* Example for an added custom case:
+        case CASE_TXT_11:
+            return "Your custom TTS text goes here.\n"
+                   "Keep it descriptive but not too long.";
+        */
         default:
-            return 0;
+            return "";
     }
 }
 

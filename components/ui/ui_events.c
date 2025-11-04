@@ -26,6 +26,10 @@ static const case_visual_t kVisuals[CASE_TXT_COUNT] = {
     [CASE_TXT_08] = { &ui_img_08_png, ui_img_08_png_load },
     [CASE_TXT_09] = { &ui_img_09_png, ui_img_09_png_load },
     [CASE_TXT_10] = { &ui_img_10_png, ui_img_10_png_load },
+
+    /* Example for CASE_TXT_11 (custom):
+    [CASE_TXT_11] = { &ui_img_11_png, ui_img_11_png_load },
+    */
 };
 
 // -------------------- QUESTION BANK FOR Screen2 --------------------
@@ -47,6 +51,9 @@ static const qa_t kQA[CASE_TXT_COUNT] = {
     [CASE_TXT_08] = { "Who can see in the dark better than anyone ?", "Owl", "Dolphin", "Chameleon" },
     [CASE_TXT_09] = { "Which bird can't fly, but swims perfectly ?", "Penguin", "Flamingo", "Owl" },
     [CASE_TXT_10] = { "Who remembers everything, even what never happened ?", "Elephant", "Camel", "Ant" },
+    /* Example for a custom case:
+    [CASE_TXT_11] = { "Your question?", "Option A", "Option B", "Option C" },
+    */
 };
 
 static void tts_question_timer_cb(lv_timer_t* t)

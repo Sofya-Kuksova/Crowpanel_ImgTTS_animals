@@ -14,7 +14,10 @@ typedef enum {
     CASE_TXT_08,
     CASE_TXT_09,
     CASE_TXT_10,
-    CASE_TXT_COUNT
+    /* Add more here if needed:
+       CASE_TXT_11,
+       CASE_TXT_12, */
+    CASE_TXT_COUNT  /* total number of cases — must remain last */
 } builtin_text_case_t;
 
 const char* get_builtin_text(void);
