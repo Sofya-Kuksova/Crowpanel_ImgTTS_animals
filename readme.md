@@ -40,9 +40,9 @@
  
    ### Building from Source
 
-   1. Install ESP-IDF framework v5.4.  
-   2. Clone the repository.
-   3. ```git lfs install```
+   1. Install ESP-IDF framework v5.4.
+   2. ```git lfs install``` 
+   3. Clone the repository.
    4. Dependencies are managed via the ESP-IDF component manager (`idf_component.yml`).  
    5. Build and flash with:  
       ```bash
